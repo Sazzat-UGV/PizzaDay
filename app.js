@@ -2,7 +2,7 @@
 
 const header = document.querySelector(".header");
 const nav = document.querySelector(".nav");
-const ul = document.querySelector(".nav__menu");
+const ul = document.querySelector(".nav_menu");
 
 // sticky navigation using Intersection observer api for better performance
 
@@ -11,8 +11,8 @@ const navHeight = nav.getBoundingClientRect().height;
 const stickyNav = (entries) => {
   const [entry] = entries;
 
-  if (!entry.isIntersecting) nav.classList.add("header__sticky");
-  else nav.classList.remove("header__sticky");
+  if (!entry.isIntersecting) nav.classList.add("header_sticky");
+  else nav.classList.remove("header_sticky");
 };
 
 const headerObserver = new IntersectionObserver(stickyNav, {
@@ -29,7 +29,7 @@ const sections = document.querySelectorAll("section");
 ul.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (e.target.classList.contains("nav__link")) {
+  if (e.target.classList.contains("nav_link")) {
     const id = e.target.getAttribute("href");
 
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
@@ -46,7 +46,7 @@ const fadingSection = (entries, observer) => {
   console.log("hello");
 
   if (!entry.isIntersecting) return;
-  entry.target.classList.remove("section__hidden");
+  entry.target.classList.remove("section_hidden");
 
   observer.unobserve(entry.target);
 };
@@ -58,19 +58,20 @@ const sectionObserver = new IntersectionObserver(fadingSection, {
 
 allSections.forEach((section) => {
   sectionObserver.observe(section);
-  section.classList.add("section__hidden");
+  section.classList.add("section_hidden");
 });
 
+
 // mobile menu
-const mobileMenu = document.querySelector(".mobile__menu");
+const mobileMenu = document.querySelector(".mobile_menu");
 const overlay = document.querySelector(".navigation");
 
 const showMenu = () => {
-  overlay.classList.add("show__menu");
+  overlay.classList.add("show_menu");
 };
 
 const hideMenu = () => {
-  overlay.classList.remove("show__menu");
+  overlay.classList.remove("show_menu");
 };
 
 mobileMenu.addEventListener("click", showMenu);
